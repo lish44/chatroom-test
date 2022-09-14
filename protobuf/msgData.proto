@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package="./;msgData";
+
+package msgData;
+
+message msgData {
+	bytes datas = 1;
+}
+
+// types : 1
+message msgC2S {
+	string nick = 1;
+	string msg = 2;
+	sfixed64 time = 3;
+	enum MsgType {
+		join = 0;
+		send = 1;
+		quit = 2;
+
+	} 
+	MsgType msgType = 4;
+}
+
+// types : 2
+message account {
+	string user = 1;
+	string pass = 2;
+	int32 state = 3;
+}
+
+// types : 3
+message accountAck {
+	int32 Ack = 1;
+}
+
