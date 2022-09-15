@@ -171,7 +171,9 @@ func msgTypeHandel(conn net.Conn, protoData, datas []byte) {
 
 	case pbf.MsgC2S_quit:
 		broadcast(nick, datas, func() {
+			c := m_userList[nick]
 			delete(m_userList, nick)
+			c.Close()
 		})
 	}
 }
